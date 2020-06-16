@@ -21,30 +21,30 @@ public class TestRunner implements ApplicationRunner {
     RepliesRepository repliesRepository;
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Posts tmp = postsRepository.save(Posts.builder()
-        .author("1")
-        .content("1")
-        .title("1")
-        .build());
-
-        Posts tmp2 = postsRepository.save(Posts.builder()
-                .author("2")
-                .content("2")
-                .title("2")
-                .build());
-
-        Replies rep1 = repliesRepository.save(Replies.builder()
-        .reply_content("re_1")
-        .reply_name("re_1")
-        .posts(tmp)
-        .build());
-
-        Replies rep2 = repliesRepository.save(Replies.builder()
-                .reply_content("re_2")
-                .reply_name("re_2")
-                .posts(tmp)
-                .build());
-
+//        Posts tmp = postsRepository.save(Posts.builder()
+//        .author("1")
+//        .content("1")
+//        .title("1")
+//        .build());
+//
+//        Posts tmp2 = postsRepository.save(Posts.builder()
+//                .author("2")
+//                .content("2")
+//                .title("2")
+//                .build());
+//
+//        Replies rep1 = repliesRepository.save(Replies.builder()
+//        .reply_content("re_1")
+//        .reply_name("re_1")
+//        .posts(tmp)
+//        .build());
+//
+//        Replies rep2 = repliesRepository.save(Replies.builder()
+//                .reply_content("re_2")
+//                .reply_name("re_2")
+//                .posts(tmp)
+//                .build());
+//
 
     }
 }
