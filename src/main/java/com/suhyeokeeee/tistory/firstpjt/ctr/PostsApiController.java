@@ -19,7 +19,10 @@ public class PostsApiController {
         return postService.save(postsSaveRequestDto);
     }
 
-
+    @PostMapping("/view_cnt")   // 조회수기능
+    public void view_increase(@RequestBody Long id){
+        postService.viewIncrease(id);
+    }
 
 
     @PutMapping("/blog/post/{id}")      // 수정기능
@@ -27,7 +30,7 @@ public class PostsApiController {
          postService.update(id, postsUpdateRequestDto);
     }
 
-    @DeleteMapping("/blog/post/{id}")
+    @DeleteMapping("/blog/post/{id}")   //삭제기능
     public void delete(@PathVariable Long id){
         postService.delete(id);
     }

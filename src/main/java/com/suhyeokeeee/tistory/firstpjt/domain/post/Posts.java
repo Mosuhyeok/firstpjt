@@ -30,6 +30,9 @@ public class Posts extends BaseTimeEntity {
     @Column(nullable = false)
     private String author;
 
+    @Column
+    private long view =0;
+
     //게시글 삭제 할 시 댓글도 삭제하기 위해서 cascade ALL
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "posts")
     private List<Replies>  replies = new ArrayList<Replies>();
@@ -43,5 +46,9 @@ public class Posts extends BaseTimeEntity {
     public void update(String title, String content) {
         this.title = title;
         this.content=content;
+    }
+
+    public void viewIncrease(){
+        this.view++;
     }
 }

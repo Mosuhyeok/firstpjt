@@ -39,8 +39,8 @@ public class ReplyService {
     }
 
     @Transactional
-    public void update(ReplyUpdateDto dto,Long post_id){
-        Replies replies = repliesRepository.findByPosts_idAndId(post_id,dto.getId());
+    public void update(ReplyUpdateDto dto,Long post_id,Long reply_id){
+        Replies replies = repliesRepository.findByPosts_idAndId(post_id,reply_id);
         replies.update(dto.getReply_name(),dto.getReply_content());
     }
 

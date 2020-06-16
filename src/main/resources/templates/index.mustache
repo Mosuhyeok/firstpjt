@@ -12,11 +12,12 @@
     <tbody id="tbody">
     {{#posts}}
         <tr>
-            <td><a href="/blog/{{id}}">{{id}}</td>
+            <td><a href="/blog/{{id}}" id="view_cnt">{{id}}</td>
             <td>{{title}}</a></td>
             <td>{{author}}</td>
             <td>{{modifiedDate}}</td>
         </tr>
+         <input type="hidden" id="id" value="{{id}}">
     {{/posts}}
     </tbody>
 </table>

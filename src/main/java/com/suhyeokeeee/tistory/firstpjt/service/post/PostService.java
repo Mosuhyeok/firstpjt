@@ -44,10 +44,17 @@ public class PostService {
         return new PostsResponseDto(posts);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true) // 전체 목록 출력
     public List<PostsListResponseDto> findAllDesc(){
         return postsRepository.findAllDesc().stream()
                 .map(PostsListResponseDto::new) // 스트림을 Dto형식으로 바꿔줌
                 .collect(Collectors.toList());
+    }
+
+    @Transactional  // 조회수 관련
+    public void viewIncrease(long id){
+        Posts posts = postsRepository.findById(id).orElseThrow(()
+        ->new IllegalArgumentException("해당 게시물이 없습니다 id "+id));
+        posts.viewIncrease();
     }
 }

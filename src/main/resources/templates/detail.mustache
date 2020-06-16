@@ -1,5 +1,6 @@
 {{>layout/header}}
 
+<h1>조회수 : {{posts.view}}</h1>
 <h1>글 번호 : {{posts.id}}</h1>
 <h1>제목 : {{posts.title}}</h1>
 <br><br><br>
@@ -10,17 +11,31 @@
     <input type="hidden" id="id" value="{{posts.id}}">
 </form>
     <br><br><br><br>
-    {{#reply}}
-        <p> 댓글 글쓴이 : {{reply_name}}</p>
-        <p> 댓글 내용 : {{reply_content}}</p>
-        <button id="reply-delete">삭제하기</button>
-        <input type="hidden" id="reply_id" value="{{id}}">
-    {{/reply}}
+
 
 
 <button type="button" class="btn btn-primary" onclick="window.location.href = '/blog/update/{{id}}'">수정하기</button>
 <button type="button" class="btn btn-danger" id="btn-delete">삭제하기</button>
-<div id = "reply-name"></div>
-<div id="reply-content"></div>
+<!--<div id = "reply-name"></div>-->
+<!--<div id="reply-content"></div>-->
 {{>layout/replyform}}
+
+<br><br>
+{{#reply}}
+    <table border="2" width ="700" height="200" >
+        <th>댓글 글쓴이</th>
+        <th>댓글 내용</th>
+        <th>작성 시간</th>
+        <tr>
+            <td>{{reply_name}}</td>
+            <td>{{reply_content}}</td>
+            <td>{{modifiedDate}}</td>
+        </tr>
+    </table>
+    <button class="reply_delete" value="{{id}}">삭제하기</button>
+    <button class="reply_updapte" value="{{id}}"수정하기></button>
+    <br><br>
+{{/reply}}
+
+
 {{>layout/footer}}

@@ -13,9 +13,16 @@ var main = {
         $('#reply-save').on('click',function () {
             _this.reply_save();
         });
-        $('#reply-delete').on('click',function () {
-            _this.reply_delete();
+        $('.reply_delete').on('click', function () {
+            _this.reply_delete(this.value);
         });
+        // $('.reply_updapte').on('click',function () {
+        //     _this.reply_update(this.value);
+        // })
+        $('#view_cnt').on('click',function () {
+            _this.view_increase();  // 조회수
+        });
+
     },
 
     save : function () {
@@ -107,8 +114,7 @@ var main = {
         })
     },
 
-    reply_delete : function () {
-        var reply_id = $('#reply_id').val();
+    reply_delete : function (reply_id) {
         var post_id = $('#id').val();
         $.ajax({
             type : 'DELETE',
@@ -116,6 +122,25 @@ var main = {
         }).done(function () {
             alert("댓글이 삭제 됐습니다");
             window.location.reload();
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        })
+    },
+
+    // reply_update : function(reply_id){
+    //     var post_id = $('#id').val();
+    // }
+
+    view_increase: function () {
+        var id = $('#id').val();
+        $.ajax({
+            type : 'POST',
+            url : '/view_cnt',
+            dataType : 'text',
+            contentType :'application/json ; charset=utf-8',
+            data : JSON.stringify(id),
+        }).done(function () {
+            window.location.href = 'http://localhost:8080/blog/'+id;
         }).fail(function (error) {
             alert(JSON.stringify(error));
         })

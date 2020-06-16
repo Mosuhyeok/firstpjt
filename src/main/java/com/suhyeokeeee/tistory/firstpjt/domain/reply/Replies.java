@@ -1,6 +1,7 @@
 package com.suhyeokeeee.tistory.firstpjt.domain.reply;
 
 import com.suhyeokeeee.tistory.firstpjt.domain.post.Posts;
+import com.suhyeokeeee.tistory.firstpjt.jpaconfig.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Getter
-public class Replies {
+public class Replies extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

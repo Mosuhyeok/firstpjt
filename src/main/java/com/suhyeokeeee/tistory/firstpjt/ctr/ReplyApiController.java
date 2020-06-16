@@ -14,13 +14,19 @@ import java.util.List;
 public class ReplyApiController {
     private final ReplyService replyService;
 
-    @PostMapping("/reply/save")
+    @PostMapping("/reply/save") // 댓글등록
     public Replies save(@RequestBody ReplySaveDto dto){
         return replyService.save(dto);
     }
 
-    @DeleteMapping("/reply/{post_id}/{reply_id}")
+    @DeleteMapping("/reply/{post_id}/{reply_id}")   // 댓글삭제
     public void delete(@PathVariable Long reply_id, @PathVariable Long post_id){
         replyService.delete(post_id,reply_id);
+    }
+
+    @PutMapping("/reply/update/{post_id}/{reply_id}")   // 댓글 업데이트 (아직구현x)
+    public void update(@PathVariable Long reply_id, @PathVariable Long post_id,
+    @RequestBody ReplyUpdateDto dto){
+        replyService.update(dto,post_id,reply_id);
     }
 }
